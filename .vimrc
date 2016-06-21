@@ -25,6 +25,7 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'ahdinosaur-os/npm.vim'
+Plug 'digitaltoad/vim-pug'
 
 " add plugins to runtimepath
 call plug#end()
