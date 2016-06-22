@@ -26,6 +26,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'ahdinosaur-os/npm.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'scrooloose/nerdcommenter'
 
 " add plugins to runtimepath
 call plug#end()
@@ -105,4 +106,10 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+"" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+"
 
