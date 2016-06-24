@@ -28,6 +28,7 @@ Plug 'ahdinosaur-os/npm.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'scrooloose/nerdcommenter'
 Plug 'elzr/vim-json'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " add plugins to runtimepath
 call plug#end()
