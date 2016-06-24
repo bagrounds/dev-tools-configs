@@ -6,24 +6,30 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
-#### 0.2.0 - (Unreleased)
+#### 0.2.0 - (2016-06-24)
 ##### Added
-* ...
-
-##### Changed
-* ...
-
-##### Deprecated
-* ...
+* .vimrc
+  * syntax highlighting
+    * pug/jade
+    * json
+  * NERDCommenter plugin
+    * [normal mode]
+      * comment current line: \ cc
+      * uncomment current line: \ cu
+  * nerdtree-git-plugin
+    * show git file status in NERDTree
+* .tmux.conf
+  * default shell: zsh
+  * default 256 colors
+  * keybindings:
+    * reload tmux config: C-b C-r
+    * resize current pane: M-{h,j,k,l}
+  * vi keybindings (experimental)
+  * moue control (to select and adjust pane sizes)
 
 ##### Removed
-* ...
-
-##### Fixed
-* ...
-
-##### Security
-* ...
+* .vimrc
+  * keymapping: double tap enter (caused lag when using enter key)
 
 #### 0.1.0 - (2016-06-20)
 ##### Added
