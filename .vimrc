@@ -44,9 +44,6 @@ set ttyfast
 set mouse=a
 set ttymouse=xterm2
 
-" double tap <enter> to make a new line and back up
-imap <ENTER><ENTER> <CR><ESC>O
-
 " c-n toggles NERDTree
 map <C-n> :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
