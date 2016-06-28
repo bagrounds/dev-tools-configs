@@ -45,6 +45,9 @@ set number
 " highlight search items
 set hlsearch
 
+" perform partial searches while entering search items
+set incsearch
+
 " enable mouse
 set ttyfast
 set mouse=a
