@@ -42,6 +42,9 @@ set backspace=indent,eol,start
 " use line numbers
 set number
 
+" highlight search items
+set hlsearch
+
 " enable mouse
 set ttyfast
 set mouse=a
