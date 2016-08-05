@@ -6,6 +6,15 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.3.0 - (2016-08-05)
+##### Added
+* .tmux.conf
+  * tmux plugin manager
+  * plugin: tmux-resurrect
+
+##### Removed
+* command to run 'npm run eslint --' on syntax checking (slow and error prone) 
+
 #### 0.2.1 - (2016-06-25)
 ##### Added
 * .vimrc
