@@ -19,8 +19,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'jelera/vim-javascript-syntax'
-"Plug 'w0ng/vim-hybrid'
-Plug 'blueshirts/darcula'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'ervandew/supertab'
 Plug 'raimondi/delimitmate'
@@ -68,8 +66,6 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-" use the darcula color scheme from Intellij
-" colorscheme darcula
 syntax enable
 set background=dark
 let g:solarized_termcolors=256
@@ -82,13 +78,6 @@ set colorcolumn=80
 " highlight (81+)th columns red
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
-
-" configure delimitmate
-" let g:delimitMate_expand_cr = 1 " <- not working
-" (SLOW) workaround: 
-" imap <expr> <CR> pumvisible() ? "\<c-y>" : "<Plug>delimitMateCR"
-" control-Return will insert the extra space
-" imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " configure auto-save
 let g:auto_save = 1

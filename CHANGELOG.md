@@ -6,6 +6,10 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.4.1 - (2016-08-10)
+##### Removed
+* dead code and unused plugins
+
 #### 0.4.0 - (2016-08-10)
 ##### Added
 * .i3.conf
