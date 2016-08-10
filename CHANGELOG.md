@@ -6,6 +6,10 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.4.0 - (2016-08-10)
+##### Added
+* .i3.conf
+
 #### 0.3.0 - (2016-08-05)
 ##### Added
 * .tmux.conf
