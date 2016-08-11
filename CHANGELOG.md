@@ -6,6 +6,10 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.6.0 - (2016-08-10)
+##### Added
+* .i3status.config
+
 #### 0.5.0 - (2016-08-10)
 ##### Added
 * .Xdefaults
@@ -22,7 +26,7 @@ Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 
 #### 0.4.0 - (2016-08-10)
 ##### Added
-* .i3.conf
+* .i3.config
 
 #### 0.3.0 - (2016-08-05)
 ##### Added
