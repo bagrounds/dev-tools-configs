@@ -6,6 +6,10 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.5.0 - (2016-08-10)
+##### Added
+* .Xdefaults
+
 #### 0.4.2 - (2016-08-10)
 ##### Fixed
 * .vimrc
