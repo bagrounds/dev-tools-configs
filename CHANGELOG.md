@@ -6,6 +6,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.6.1 - (2016-08-10)
+##### Removed
+* .i3status.config
+  * vpn status (broken)
+
 #### 0.6.0 - (2016-08-10)
 ##### Added
 * .i3status.config
