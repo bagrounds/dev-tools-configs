@@ -6,6 +6,15 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.6.2 - (2016-08-12)
+##### Changed
+* .i3status.config
+  * status formatting
+* .Xdefaults
+  * background color back to original cyan
+* .i3.config
+  * font to match system font (.Xdefaults)
+
 #### 0.6.1 - (2016-08-10)
 ##### Removed
 * .i3status.config
