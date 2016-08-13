@@ -33,6 +33,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'elzr/vim-json'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wavded/vim-stylus'
+Plug 'SirVer/ultisnips'
 
 " add plugins to runtimepath
 call plug#end()
@@ -110,5 +111,8 @@ highlight link SyntasticStyleWarningSign SignColumn
 let g:NERDCommentEmptyLines = 1
 "" Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-"
+
+" configure ultisnips
+let g:UltiSnipsExpandTrigger="<S-Tab>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
