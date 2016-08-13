@@ -6,6 +6,15 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.6.3 - (2016-08-12)
+##### Added
+* .vimrc
+  * UltiSnips plugin
+
+##### Changed
+* .i3status.config
+  * date and time display
+
 #### 0.6.2 - (2016-08-12)
 ##### Changed
 * .i3status.config
