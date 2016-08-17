@@ -6,6 +6,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.6.4 - (2016-08-17)
+##### Added
+* .vimrc
+  * vim-airline plugin
+
 #### 0.6.3 - (2016-08-12)
 ##### Added
 * .vimrc

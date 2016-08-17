@@ -34,6 +34,7 @@ Plug 'elzr/vim-json'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'wavded/vim-stylus'
 Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
 
 " add plugins to runtimepath
 call plug#end()
