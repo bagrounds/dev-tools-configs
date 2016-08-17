@@ -1,5 +1,11 @@
+! needed to allow alt key modifier
+XTerm*metaSendsEscape: true
+XTerm*eightBitInput: false
+
+! set font
 *faceName: DejaVu Sans Mono:size=11:antialiasing=false
 
+! solarized color scheme
 #define BLACK           #000000
 #define S_base03        #002b36
 #define S_base02        #073642

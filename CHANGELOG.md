@@ -6,6 +6,13 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.7.0 - (2016-08-17)
+##### Added
+* .inputrc
+  * includes logic to enable alt key in xterm
+* .Xdefaults
+  * logic to enable alt key in xterm
+
 #### 0.6.4 - (2016-08-17)
 ##### Added
 * .vimrc
