@@ -6,6 +6,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
+#### 0.8.0 - (2016-08-17)
+##### Added
+* .Xdefaults
+  * control shift c/v -> copy/paste
+
 #### 0.7.0 - (2016-08-17)
 ##### Added
 * .inputrc
