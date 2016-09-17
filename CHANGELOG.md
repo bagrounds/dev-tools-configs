@@ -6,7 +6,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
-#### 0.8.1 - (2016-09-17)
+#### 0.9.0 - (2016-09-17)
 ##### Added
 * .i3blocks.config
 
@@ -15,10 +15,16 @@ Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
   * status_command from i3status to i3blocks
 
 ##### Removed
+* .i3status.config (now using i3blocks instead)
+
+#### 0.8.1 - (2016-09-17)
+##### Removed
 * .tmux.conf
   * command to set default shell to zsh (different install path causes bug)
 
-* .i3status.config (now using i3blocks instead)
+##### Fixed
+* .Xdefaults
+  * comment marker and typo
 
 #### 0.8.0 - (2016-08-17)
 ##### Added
