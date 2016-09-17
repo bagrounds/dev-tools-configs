@@ -7,9 +7,18 @@ Please use: Added, Changed, Deprecated, Removed, Fixed, or Security as labels.
 <br>
 
 #### 0.8.1 - (2016-09-17)
+##### Added
+* .i3blocks.config
+
+##### Changed
+* .i3.config
+  * status_command from i3status to i3blocks
+
 ##### Removed
 * .tmux.conf
   * command to set default shell to zsh (different install path causes bug)
+
+* .i3status.config (now using i3blocks instead)
 
 #### 0.8.0 - (2016-08-17)
 ##### Added
