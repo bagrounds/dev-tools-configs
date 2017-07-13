@@ -1,17 +1,19 @@
 ! allow copy to clipboard
-XTerm*selectToClipboard: true
+xterm*selectToClipboard: true
 
 ! [control shift c] -> copy, [control shift v] -> paste
-term*VT100.Translations: #override \
+xterm*VT100.Translations: #override \
   Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
   Ctrl Shift <Key>C: copy-selection(CLIPBOARD)
 
 ! needed to allow alt key modifier
-XTerm*metaSendsEscape: true
-XTerm*eightBitInput: false
+xterm*metaSendsEscape: true
+xterm*eightBitInput: false
 
 ! set font
 *faceName: DejaVu Sans Mono:size=11:antialiasing=false
+
+XTerm*locale: true
 
 ! solarized color scheme
 #define BLACK           #000000
