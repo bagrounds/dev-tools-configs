@@ -1,0 +1,161 @@
+#+TITLE: Emacs configuration
+
+* evil
+
+#+BEGIN_SRC emacs-lisp
+;; fix tab key for org mode
+(setq-default evil-want-C-i-jump nil)
+(require 'evil)
+(evil-mode t)
+(setq-default evil-shift-left 1)
+(setq-default evil-shift-right 1)
+(setq-default evil-shift-width 2)
+#+END_SRC
+
+* org
+
+#+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+  'org-babel-load-languages
+    '((emacs-lisp . t)))
+(setq-default org-confirm-babel-evauluate nil)
+#+END_SRC
+
+* js2
+
+#+BEGIN_SRC emacs-lisp
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq-default js2-mode-show-parse-errors nil)
+(setq-default js2-mode-show-strict-warnings nil)
+(setq-default js2-highlight-level 3)
+(setq-default js-indent-level 2)
+#+END_SRC
+
+* helm
+
+#+BEGIN_SRC emacs-lisp
+(require 'helm)
+(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "M-x") #'helm-M-x)
+#+END_SRC
+
+* flycheck
+
+#+BEGIN_SRC emacs-lisp
+(require 'flycheck)
+(add-hook 'js2-mode-hook 'flycheck-mode)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(setq-default flycheck-disabled-checkers
+    (append flycheck-disabled-checkers
+        '(javascript-jshint)))
+
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+(setq-default flycheck-eslintrc ".eslintrc")
+#+END_SRC
+
+* neotree
+
+#+BEGIN_SRC emacs-lisp
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+(add-hook 'neotree-mode-hook
+    (lambda ()
+	    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+	    (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+	    (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+	    (define-key evil-normal-state-local-map (kbd "r") 'neotree-rename-node)
+	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+	    (define-key evil-normal-state-local-map (kbd "DEL") 'neotree-select-up-node)
+	    (define-key evil-normal-state-local-map (kbd "h") 'neotree-hidden-file-toggle)
+	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-change-root)))
+
+(setq-default neo-show-hidden-files t)
+#+END_SRC
+
+* highlight-symbol
+
+#+BEGIN_SRC emacs-lisp
+(require 'highlight-symbol)
+(setq-default highlight-symbol-idle-delay 0)
+(add-hook 'prog-mode-hook 'highlight-symbol-mode)
+(global-set-key [f3] 'highlight-symbol-mode)
+#+END_SRC
+
+* highlight-numbers
+
+#+BEGIN_SRC emacs-lisp
+(require 'highlight-numbers)
+(add-hook 'prog-mode-hook 'highlight-numbers-mode)
+#+END_SRC
+
+* highlight-operators
+
+#+BEGIN_SRC emacs-lisp
+(require 'highlight-operators)
+(add-hook 'prog-mode-hook 'highlight-operators-mode)
+#+END_SRC
+
+* other
+
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode 0)
+
+(setq-default scroll-step 1)
+(setq-default tab-width 2 indent-tabs-mode nil)
+(global-linum-mode 1)
+(setq-default linum-format "%2d\u2502")
+
+(set-face-attribute 'highlight-operators-face nil :foreground "green")
+
+(set-face-attribute 'highlight-numbers-number nil :foreground "yellow")
+
+(set-face-attribute 'font-lock-comment-face nil :foreground "brightblack")
+(set-face-attribute 'font-lock-doc-face nil :foreground "brightblack")
+(set-face-attribute 'font-lock-keyword-face nil :foreground "blue")
+(set-face-attribute 'font-lock-variable-name-face nil :foreground "white")
+(set-face-attribute 'font-lock-builtin-face nil :foreground "unspecified")
+(set-face-attribute 'font-lock-function-name-face nil :foreground "cyan")
+(set-face-attribute 'font-lock-constant-face nil :foreground "yellow")
+(set-face-attribute 'font-lock-string-face nil :foreground "yellow")
+
+(set-face-attribute 'js2-jsdoc-tag nil :foreground "#00ff00")
+(set-face-attribute 'js2-jsdoc-value nil :foreground "white")
+(set-face-attribute 'js2-function-param nil :foreground "white")
+(set-face-attribute 'js2-object-property nil :foreground "white")
+(set-face-attribute 'js2-function-call nil :foreground "cyan")
+(set-face-attribute 'js2-external-variable nil :foreground "green")
+
+(add-hook 'prog-mode-hook 'show-paren-mode)
+(setq-default show-paren-delay 0)
+
+(set-face-attribute 'show-paren-match nil
+    :foreground "brightwhite"
+    :background "black"
+)
+(set-face-attribute 'show-paren-mismatch nil
+    :foreground "red"
+    :background "black"
+)
+
+(set-face-attribute 'flycheck-error nil :foreground "red")
+
+(set-face-attribute 'highlight-symbol-face nil
+    :background "darkblack"
+    :foreground "brightwhite"
+    :weight 'bold
+)
+#+END_SRC
+
