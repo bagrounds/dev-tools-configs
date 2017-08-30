@@ -1,7 +1,11 @@
 #+TITLE: Emacs configuration
 
-* evil
+* company
+#+BEGIN_SRC emacs-lisp
+(require 'company)
+#+END_SRC
 
+* evil
 #+BEGIN_SRC emacs-lisp
 ;; fix tab key for org mode
 (setq-default evil-want-C-i-jump nil)
