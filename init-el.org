@@ -107,12 +107,23 @@
 (setq-default neo-show-hidden-files t)
 #+END_SRC
 
-* highlight-symbol
 * magit
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
 
+* projectile
+#+BEGIN_SRC emacs-lisp
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(add-to-list 'projectile-globally-ignored-directories "target")
+(add-to-list 'projectile-globally-ignored-directories ".git")
+(setq-default projectile-mode-line " Proj")
+#+END_SRC
+
+* highlight-symbol
 #+BEGIN_SRC emacs-lisp
 (require 'highlight-symbol)
 (setq-default highlight-symbol-idle-delay 0)
