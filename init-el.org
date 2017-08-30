@@ -178,6 +178,8 @@
 (menu-bar-mode 0)
 
 (setq-default scroll-step 1)
+(setq-default scroll-conservatively 10000)
+(setq-default auto-window-vscroll nil)
 (setq-default tab-width 2 indent-tabs-mode nil)
 (global-linum-mode 1)
 (setq-default linum-format "%2d\u2502")
