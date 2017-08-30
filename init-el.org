@@ -232,5 +232,19 @@
   (lambda () (interactive)
     (find-file "~/.emacs.d/init-el.org")))
 
+(setq-default header-line-format
+  '((:eval (format " [%s]" (projectile-project-name)))
+  "%b"))
+
+(setq-default mode-line-format (list
+  "%e"
+  mode-line-front-space
+  mode-line-client
+  mode-line-modified
+  mode-line-position
+  vc-mode
+  " "
+  mode-line-modes))
+
 #+END_SRC
 
