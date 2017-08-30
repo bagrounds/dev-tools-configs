@@ -168,6 +168,12 @@
 (add-hook 'before-save-hook 'scalafmt-before-save)
 #+END_SRC
 
+* paradox
+#+BEGIN_SRC emacs-lisp
+(setq-default paradox-github-token t)
+#+END_SRC
+
+* other
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode 0)
 
