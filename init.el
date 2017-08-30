@@ -11,8 +11,6 @@
     (quote
       (evil-vimish-fold terraform-mode evil-magit git-gutter paradox evil-nerd-commenter haskell-mode nix-mode helm-projectile json-mode highlight-operators highlight-numbers auto-highlight-symbol highlight-symbol projectile org-evil org-edna color-theme-approximate color-theme-solarized color-theme-sanityinc-solarized flycheck solarized-theme js2-mode magit neotree helm evil))))
 
-(custom-set-faces)
-
 (org-babel-load-file "~/.emacs.d/init-el.org")
 
 (provide 'init)
