@@ -145,7 +145,28 @@
 (add-hook 'prog-mode-hook 'highlight-operators-mode)
 #+END_SRC
 
-* other
+* scalafmt
+#+BEGIN_SRC emacs-lisp
+(defun scalafmt-buffer ()
+  (interactive)
+  (setq orig-point (point))
+  (call-process-region
+   (point-min) (point-max)
+   "scalafmt"
+   t ;; delete source region
+   t ;; insert output into buffer
+   nil ;; don't stream in results
+   "--config-str" "rewrite.rules=[RedundantParens,SortImports]"
+   "--stdin"
+   "--assume-filename" (file-name-nondirectory buffer-file-name))
+  (goto-char orig-point))
+
+(defun scalafmt-before-save ()
+  (interactive)
+  (when (eq major-mode 'scala-mode) (scalafmt-buffer)))
+
+(add-hook 'before-save-hook 'scalafmt-before-save)
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode 0)
