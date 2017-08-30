@@ -14,6 +14,7 @@
 (setq-default evil-shift-left 1)
 (setq-default evil-shift-right 1)
 (setq-default evil-shift-width 2)
+(evil-vimish-fold-mode 1)
 #+END_SRC
 
 * org
