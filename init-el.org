@@ -17,8 +17,12 @@
 (evil-vimish-fold-mode 1)
 #+END_SRC
 
-* org
+* git-gutter
+#+BEGIN_SRC emacs-lisp
+(global-git-gutter-mode +1)
+#+END_SRC
 
+* org
 #+BEGIN_SRC emacs-lisp
 (org-babel-do-load-languages
   'org-babel-load-languages
