@@ -227,5 +227,10 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
+(global-set-key
+  (kbd "C-c e")
+  (lambda () (interactive)
+    (find-file "~/.emacs.d/init-el.org")))
+
 #+END_SRC
 
