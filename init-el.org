@@ -246,5 +246,6 @@
   " "
   mode-line-modes))
 
+(setq-default show-trailing-whitespace t)
 #+END_SRC
 
