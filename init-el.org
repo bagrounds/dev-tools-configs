@@ -42,7 +42,6 @@
 #+END_SRC
 
 * js2
-
 #+BEGIN_SRC emacs-lisp
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -53,7 +52,6 @@
 #+END_SRC
 
 * helm
-
 #+BEGIN_SRC emacs-lisp
 (require 'helm)
 (require 'helm-config)
@@ -62,7 +60,6 @@
 #+END_SRC
 
 * flycheck
-
 #+BEGIN_SRC emacs-lisp
 (require 'flycheck)
 (add-hook 'js2-mode-hook 'flycheck-mode)
@@ -86,7 +83,6 @@
 #+END_SRC
 
 * neotree
-
 #+BEGIN_SRC emacs-lisp
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
@@ -132,14 +128,12 @@
 #+END_SRC
 
 * highlight-numbers
-
 #+BEGIN_SRC emacs-lisp
 (require 'highlight-numbers)
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 #+END_SRC
 
 * highlight-operators
-
 #+BEGIN_SRC emacs-lisp
 (require 'highlight-operators)
 (add-hook 'prog-mode-hook 'highlight-operators-mode)
