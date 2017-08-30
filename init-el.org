@@ -28,6 +28,17 @@
   'org-babel-load-languages
     '((emacs-lisp . t)))
 (setq-default org-confirm-babel-evauluate nil)
+(global-set-key (kbd "C-c c") 'org-capture)
+(setq-default org-capture-templates
+  '(("i" "inbox" entry
+    (file+headline "~/.notes/main.org" "Inbox")
+    "* TODO [%t] %i%?")))
+(global-set-key
+  (kbd "C-c o")
+  (lambda () (interactive)
+    (find-file "~/.notes/main.org")))
+(setq org-default-notes-file "~/.notes/main.org")
+(setq org-refile-targets '(("~/.notes/main.org" :maxlevel . 3)))
 #+END_SRC
 
 * js2
