@@ -2,6 +2,8 @@
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
+(setq-default vc-follow-symlinks t)
+
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
