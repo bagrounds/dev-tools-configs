@@ -2,23 +2,27 @@
 
 * company
 #+BEGIN_SRC emacs-lisp
-(require 'company)
+(use-package company)
 #+END_SRC
 
 * evil
 #+BEGIN_SRC emacs-lisp
 ;; fix tab key for org mode
 (setq-default evil-want-C-i-jump nil)
-(require 'evil)
+(use-package evil)
+(use-package evil-magit)
+(use-package org-evil)
 (evil-mode t)
 (setq-default evil-shift-left 1)
 (setq-default evil-shift-right 1)
 (setq-default evil-shift-width 2)
+(use-package evil-vimish-fold)
 (evil-vimish-fold-mode 1)
 #+END_SRC
 
 * git-gutter
 #+BEGIN_SRC emacs-lisp
+(use-package git-gutter)
 (global-git-gutter-mode +1)
 #+END_SRC
 
@@ -43,7 +47,7 @@
 
 * js2
 #+BEGIN_SRC emacs-lisp
-(require 'js2-mode)
+(use-package js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (setq-default js2-mode-show-parse-errors nil)
 (setq-default js2-mode-show-strict-warnings nil)
@@ -53,15 +57,15 @@
 
 * helm
 #+BEGIN_SRC emacs-lisp
-(require 'helm)
-(require 'helm-config)
+(use-package helm)
+(use-package helm-config)
 (helm-mode 1)
 (global-set-key (kbd "M-x") #'helm-M-x)
 #+END_SRC
 
 * flycheck
 #+BEGIN_SRC emacs-lisp
-(require 'flycheck)
+(use-package flycheck)
 (add-hook 'js2-mode-hook 'flycheck-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (setq-default flycheck-disabled-checkers
@@ -82,9 +86,18 @@
 (setq-default flycheck-eslintrc ".eslintrc")
 #+END_SRC
 
+* lang
+#+BEGIN_SRC emacs-lisp
+(use-package terraform-mode)
+(use-package haskell-mode)
+(use-package nix-mode)
+(use-package json-mode)
+(use-package js2-mode)
+#+END_SRC
+
 * neotree
 #+BEGIN_SRC emacs-lisp
-(require 'neotree)
+(use-package neotree)
 (global-set-key [f8] 'neotree-toggle)
 (global-set-key [f7] 'neotree-find)
 
@@ -105,14 +118,16 @@
 
 * magit
 #+BEGIN_SRC emacs-lisp
+(use-package magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
 
 * projectile
 #+BEGIN_SRC emacs-lisp
-(require 'projectile)
+(use-package projectile)
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
+(use-package helm-projectile)
 (helm-projectile-on)
 (add-to-list 'projectile-globally-ignored-directories "target")
 (add-to-list 'projectile-globally-ignored-directories ".git")
@@ -121,7 +136,8 @@
 
 * highlight-symbol
 #+BEGIN_SRC emacs-lisp
-(require 'highlight-symbol)
+(use-package highlight-symbol)
+(use-package auto-highlight-symbol)
 (setq-default highlight-symbol-idle-delay 0)
 (add-hook 'prog-mode-hook 'highlight-symbol-mode)
 (global-set-key [f3] 'highlight-symbol-mode)
@@ -129,13 +145,13 @@
 
 * highlight-numbers
 #+BEGIN_SRC emacs-lisp
-(require 'highlight-numbers)
+(use-package highlight-numbers)
 (add-hook 'prog-mode-hook 'highlight-numbers-mode)
 #+END_SRC
 
 * highlight-operators
 #+BEGIN_SRC emacs-lisp
-(require 'highlight-operators)
+(use-package highlight-operators)
 (add-hook 'prog-mode-hook 'highlight-operators-mode)
 #+END_SRC
 
@@ -164,6 +180,7 @@
 
 * paradox
 #+BEGIN_SRC emacs-lisp
+(use-package paradox)
 (setq-default paradox-github-token t)
 #+END_SRC
 
