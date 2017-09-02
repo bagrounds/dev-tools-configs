@@ -8,82 +8,98 @@
 * evil
 #+BEGIN_SRC emacs-lisp
 ;; fix tab key for org mode
-(setq-default evil-want-C-i-jump nil)
-(use-package evil)
-(use-package evil-magit)
-(use-package org-evil)
-(evil-mode t)
-(setq-default evil-shift-left 1)
-(setq-default evil-shift-right 1)
-(setq-default evil-shift-width 2)
-(use-package evil-vimish-fold)
-(evil-vimish-fold-mode 1)
+(use-package evil
+  :init
+  (setq-default evil-want-C-i-jump nil)
+  :config
+  (use-package evil-magit)
+  (use-package org-evil)
+  (evil-mode t)
+  (setq-default evil-shift-left 1)
+  (setq-default evil-shift-right 1)
+  (setq-default evil-shift-width 2)
+  (use-package evil-vimish-fold)
+  (evil-vimish-fold-mode 1))
 #+END_SRC
 
 * git-gutter
 #+BEGIN_SRC emacs-lisp
-(use-package git-gutter)
-(global-git-gutter-mode +1)
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode +1))
 #+END_SRC
 
 * org
 #+BEGIN_SRC emacs-lisp
-(org-babel-do-load-languages
-  'org-babel-load-languages
-    '((emacs-lisp . t)))
-(setq-default org-confirm-babel-evauluate nil)
-(global-set-key (kbd "C-c c") 'org-capture)
-(setq-default org-capture-templates
-  '(("i" "inbox" entry
-    (file+headline "~/.notes/main.org" "Inbox")
-    "* TODO [%t] %i%?")))
-(global-set-key
-  (kbd "C-c o")
-  (lambda () (interactive)
-    (find-file "~/.notes/main.org")))
-(setq org-default-notes-file "~/.notes/main.org")
-(setq org-refile-targets '(("~/.notes/main.org" :maxlevel . 3)))
+(use-package org
+  :init
+  (org-babel-do-load-languages
+    'org-babel-load-languages
+      '((emacs-lisp . t)))
+  (setq-default org-confirm-babel-evauluate nil)
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (setq-default org-capture-templates
+    '(("i" "inbox" entry
+      (file+headline "~/.notes/main.org" "Inbox")
+      "* TODO [%t] %i%?")))
+  (global-set-key
+    (kbd "C-c o")
+    (lambda () (interactive)
+      (find-file "~/.notes/main.org")))
+  (setq org-default-notes-file "~/.notes/main.org")
+  (setq org-refile-targets '(("~/.notes/main.org" :maxlevel . 3))))
 #+END_SRC
 
 * js2
 #+BEGIN_SRC emacs-lisp
-(use-package js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(setq-default js2-mode-show-parse-errors nil)
-(setq-default js2-mode-show-strict-warnings nil)
-(setq-default js2-highlight-level 3)
-(setq-default js-indent-level 2)
+(use-package js2-mode
+  :mode ("\\.js\\'" . js2-mode)
+  :config
+  (setq-default js2-mode-show-parse-errors nil)
+  (setq-default js2-mode-show-strict-warnings nil)
+  (setq-default js2-highlight-level 3)
+  (setq-default js-indent-level 2)
+  (set-face-attribute 'js2-jsdoc-tag nil :foreground "#00ff00")
+  (set-face-attribute 'js2-jsdoc-value nil :foreground "white")
+  (set-face-attribute 'js2-function-param nil :foreground "white")
+  (set-face-attribute 'js2-object-property nil :foreground "white")
+  (set-face-attribute 'js2-function-call nil :foreground "cyan")
+  (set-face-attribute 'js2-external-variable nil :foreground "green"))
+
+
 #+END_SRC
 
 * helm
 #+BEGIN_SRC emacs-lisp
-(use-package helm)
-(use-package helm-config)
-(helm-mode 1)
-(global-set-key (kbd "M-x") #'helm-M-x)
+(use-package helm
+  :config
+  (use-package helm-config)
+  (helm-mode 1)
+  (global-set-key (kbd "M-x") #'helm-M-x))
 #+END_SRC
 
 * flycheck
 #+BEGIN_SRC emacs-lisp
-(use-package flycheck)
-(add-hook 'js2-mode-hook 'flycheck-mode)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(setq-default flycheck-disabled-checkers
-    (append flycheck-disabled-checkers
-        '(javascript-jshint)))
+(use-package flycheck
+  :config
+  (add-hook 'js2-mode-hook 'flycheck-mode)
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (setq-default flycheck-disabled-checkers
+      (append flycheck-disabled-checkers
+          '(javascript-jshint)))
 
-(defun my/use-eslint-from-node-modules ()
-  (let* ((root (locate-dominating-file
-                (or (buffer-file-name) default-directory)
-                "node_modules"))
-         (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
-                                        root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))
+  (defun my/use-eslint-from-node-modules ()
+    (let* ((root (locate-dominating-file
+                  (or (buffer-file-name) default-directory)
+                  "node_modules"))
+          (eslint (and root
+                        (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                          root))))
+      (when (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint))))
 
-(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
-(setq-default flycheck-eslintrc ".eslintrc")
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  (setq-default flycheck-eslintrc ".eslintrc"))
 #+END_SRC
 
 * lang
@@ -92,67 +108,78 @@
 (use-package haskell-mode)
 (use-package nix-mode)
 (use-package json-mode)
-(use-package js2-mode)
 #+END_SRC
 
 * neotree
 #+BEGIN_SRC emacs-lisp
-(use-package neotree)
-(global-set-key [f8] 'neotree-toggle)
-(global-set-key [f7] 'neotree-find)
-
-(add-hook 'neotree-mode-hook
+(use-package neotree
+  :bind (([f8] . neotree-toggle)
+         ([f7] . neotree-find))
+  :config
+  (setq-default neo-show-hidden-files t)
+  (add-hook 'neotree-mode-hook
     (lambda ()
-	    (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
-	    (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
-	    (define-key evil-normal-state-local-map (kbd "u") (lambda () (interactive)
-        (neo-buffer--refresh t)))
-	    (define-key evil-normal-state-local-map (kbd "r") 'neotree-rename-node)
-	    (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-	    (define-key evil-normal-state-local-map (kbd "DEL") 'neotree-select-up-node)
-	    (define-key evil-normal-state-local-map (kbd "h") 'neotree-hidden-file-toggle)
-	    (define-key evil-normal-state-local-map (kbd "RET") 'neotree-change-root)))
-
-(setq-default neo-show-hidden-files t)
+      (define-key evil-normal-state-local-map (kbd "u")
+        (lambda () (interactive) (neo-buffer--refresh t)))
+      (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-enter)
+      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+      (define-key evil-normal-state-local-map (kbd "r") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map (kbd "DEL") 'neotree-select-up-node)
+      (define-key evil-normal-state-local-map (kbd "h") 'neotree-hidden-file-toggle)
+      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-change-root))))
 #+END_SRC
 
 * magit
 #+BEGIN_SRC emacs-lisp
-(use-package magit)
-(global-set-key (kbd "C-x g") 'magit-status)
+(use-package magit
+  :bind ("C-x g" . magit-status))
 #+END_SRC
 
 * projectile
 #+BEGIN_SRC emacs-lisp
-(use-package projectile)
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(use-package helm-projectile)
-(helm-projectile-on)
-(add-to-list 'projectile-globally-ignored-directories "target")
-(add-to-list 'projectile-globally-ignored-directories ".git")
-(setq-default projectile-mode-line " Proj")
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  (setq projectile-completion-system 'helm)
+  (use-package helm-projectile)
+  (helm-projectile-on)
+  (add-to-list 'projectile-globally-ignored-directories "target")
+  (add-to-list 'projectile-globally-ignored-directories ".git")
+  (setq-default projectile-mode-line " Proj"))
 #+END_SRC
 
 * highlight-symbol
 #+BEGIN_SRC emacs-lisp
-(use-package highlight-symbol)
-(use-package auto-highlight-symbol)
-(setq-default highlight-symbol-idle-delay 0)
-(add-hook 'prog-mode-hook 'highlight-symbol-mode)
-(global-set-key [f3] 'highlight-symbol-mode)
+(use-package highlight-symbol
+  :bind ([f3] . highlight-symbol-mode)
+  :init
+  (add-hook 'prog-mode-hook 'highlight-symbol-mode)
+  :config
+  (setq-default highlight-symbol-idle-delay 0)
+  (set-face-attribute 'highlight-symbol-face nil
+      :background "darkblack"
+      :foreground "brightwhite"
+      :weight 'bold))
 #+END_SRC
 
 * highlight-numbers
 #+BEGIN_SRC emacs-lisp
-(use-package highlight-numbers)
-(add-hook 'prog-mode-hook 'highlight-numbers-mode)
+(use-package highlight-numbers
+  :init
+  (add-hook 'prog-mode-hook 'highlight-numbers-mode)
+  :config
+  (set-face-attribute 'highlight-numbers-number nil :foreground "yellow"))
+
 #+END_SRC
 
 * highlight-operators
 #+BEGIN_SRC emacs-lisp
-(use-package highlight-operators)
-(add-hook 'prog-mode-hook 'highlight-operators-mode)
+(use-package highlight-operators
+  :init
+  (add-hook 'prog-mode-hook 'highlight-operators-mode)
+  :config
+  (set-face-attribute 'highlight-operators-face nil :foreground "green"))
 #+END_SRC
 
 * scalafmt
@@ -180,8 +207,9 @@
 
 * paradox
 #+BEGIN_SRC emacs-lisp
-(use-package paradox)
-(setq-default paradox-github-token t)
+(use-package paradox
+  :config
+  (setq-default paradox-github-token t))
 #+END_SRC
 
 * other
@@ -195,9 +223,6 @@
 (global-linum-mode 1)
 (setq-default linum-format "%2d\u2502")
 
-(set-face-attribute 'highlight-operators-face nil :foreground "green")
-
-(set-face-attribute 'highlight-numbers-number nil :foreground "yellow")
 
 (set-face-attribute 'font-lock-comment-face nil :foreground "brightblack")
 (set-face-attribute 'font-lock-doc-face nil :foreground "brightblack")
@@ -207,13 +232,6 @@
 (set-face-attribute 'font-lock-function-name-face nil :foreground "cyan")
 (set-face-attribute 'font-lock-constant-face nil :foreground "yellow")
 (set-face-attribute 'font-lock-string-face nil :foreground "yellow")
-
-(set-face-attribute 'js2-jsdoc-tag nil :foreground "#00ff00")
-(set-face-attribute 'js2-jsdoc-value nil :foreground "white")
-(set-face-attribute 'js2-function-param nil :foreground "white")
-(set-face-attribute 'js2-object-property nil :foreground "white")
-(set-face-attribute 'js2-function-call nil :foreground "cyan")
-(set-face-attribute 'js2-external-variable nil :foreground "green")
 
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (setq-default show-paren-delay 0)
@@ -228,12 +246,6 @@
 )
 
 (set-face-attribute 'flycheck-error nil :foreground "red")
-
-(set-face-attribute 'highlight-symbol-face nil
-    :background "darkblack"
-    :foreground "brightwhite"
-    :weight 'bold
-)
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
