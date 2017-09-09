@@ -1,0 +1,16 @@
+Config {
+    position = TopW L 98
+  , lowerOnStart = False
+  , pickBroadest = True
+  , allDesktops = True
+  , hideOnStart = False
+  , overrideRedirect = False
+  , persistent = False
+  , sepChar = "%"
+  , alignSep = "<>"
+  , commands = [
+      Run StdinReader
+    , Run Com "date" ["+%Y-%m-%d %a %H:%M"] "date" 600
+    ]
+  , template = "%StdinReader% <> %date%"
+}
