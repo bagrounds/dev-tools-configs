@@ -28,6 +28,9 @@ main =
       terminal = "xterm"
     }
     myKeys = [
+      ((mod4Mask, xK_Left), spawn "amixer -q sset Master toggle"),
+      ((mod4Mask, xK_Up), spawn "amixer -q sset Master 5%+"),
+      ((mod4Mask, xK_Down), spawn "amixer -q sset Master 5%-"),
       ((mod4Mask, xK_i), spawn "google-chrome"),
       ((mod4Mask, xK_Return), spawn "xterm"),
       ((mod4Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
