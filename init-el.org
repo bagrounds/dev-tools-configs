@@ -207,7 +207,7 @@
   (interactive)
   (when (eq major-mode 'scala-mode) (scalafmt-buffer)))
 
-(add-hook 'before-save-hook 'scalafmt-before-save)
+;;(add-hook 'before-save-hook 'scalafmt-before-save)
 #+END_SRC
 
 * paradox
