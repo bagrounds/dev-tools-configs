@@ -10,7 +10,24 @@ Config {
   , alignSep = "<>"
   , commands = [
       Run StdinReader
-    , Run Com "date" ["+%Y-%m-%d %a %H:%M"] "date" 600
+    , Run Com "date" ["+%Y-%m-%d %a %H:%M %Z"] "date" 600
+    , Run Com "date" ["+%m-%d %H:%M %Z", "--utc"] "utc" 600
+    , Run Com "/home/bagrounds/bin/volume" [] "vol" 10
+    , Run Battery        [ "--template" , "<acstatus>"
+                          , "--Low"      , "10"        -- units: %
+                          , "--High"     , "80"        -- units: %
+                          , "--low"      , "darkred"
+                          , "--normal"   , "darkorange"
+                          , "--high"     , "green"
+
+                          , "--" -- battery specific options
+                                    -- discharging status
+                                    , "-o"	, "<fc=orange><left>▼(<timeleft>)</fc>"
+                                    -- AC "on" status
+                                    , "-O"	, "<fc=yellow><left>▲(<timeleft>)</fc>"
+                                    -- charged status
+                                    , "-i"	, "<fc=green><left>✔</fc>"
+                          ] 50
     ]
-  , template = "%StdinReader% <> %date%"
+  , template = "%StdinReader% <> %vol% | <fc=#666666>(%utc%)</fc> %date% | %battery%"
 }
