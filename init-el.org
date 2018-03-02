@@ -109,6 +109,8 @@
 
 * lang
 #+BEGIN_SRC emacs-lisp
+(use-package typescript-mode)
+(use-package yaml-mode)
 (use-package terraform-mode)
 (use-package haskell-mode)
 (use-package nix-mode)
