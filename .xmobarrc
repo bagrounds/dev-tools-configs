@@ -8,11 +8,12 @@ Config {
   , persistent = False
   , sepChar = "%"
   , alignSep = "<>"
+  , font = "xft:Bitstream DejaVu Sans Mono:size=11:antialiasing=false"
   , commands = [
       Run StdinReader
     , Run Com "date" ["+%Y-%m-%d %a %H:%M %Z"] "date" 600
     , Run Com "date" ["+%m-%d %H:%M %Z", "--utc"] "utc" 600
-    , Run Com "/home/bagrounds/bin/volume" [] "vol" 10
+    , Run Com "/home/bryan/bin/volume" [] "vol" 10
     , Run Battery        [ "--template" , "<acstatus>"
                           , "--Low"      , "10"        -- units: %
                           , "--High"     , "80"        -- units: %
