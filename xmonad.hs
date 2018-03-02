@@ -20,7 +20,7 @@ main =
               "pgrep stalonetray || stalonetray",
               "xscreensaver",
               "xrdb -load ~/.Xdefaults",
-              "xrandr --output DP2-1 --auto --above eDP1",
+              "xrandr --output VGA1 --auto --above LVDS1 --auto",
               "~/bin/remap-caps-to-ctrl",
               "nm-applet"
               ]
@@ -31,7 +31,7 @@ main =
       ((mod4Mask, xK_Left), spawn "amixer -q sset Master toggle"),
       ((mod4Mask, xK_Up), spawn "amixer -q sset Master 5%+"),
       ((mod4Mask, xK_Down), spawn "amixer -q sset Master 5%-"),
-      ((mod4Mask, xK_i), spawn "google-chrome"),
+      ((mod4Mask, xK_i), spawn "chromium"),
       ((mod4Mask, xK_Return), spawn "xterm"),
       ((mod4Mask .|. shiftMask, xK_l), spawn "xscreensaver-command -lock")
       ]
