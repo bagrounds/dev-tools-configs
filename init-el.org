@@ -109,6 +109,7 @@
 
 * lang
 #+BEGIN_SRC emacs-lisp
+(use-package dockerfile-mode)
 (use-package typescript-mode)
 (use-package yaml-mode)
 (use-package terraform-mode)
