@@ -228,6 +228,7 @@
 (setq-default auto-window-vscroll nil)
 (setq-default tab-width 2 indent-tabs-mode nil)
 (global-linum-mode 1)
+(setq line-number-display-limit-width 2000000)
 (setq-default linum-format "%2d\u2502")
 
 
